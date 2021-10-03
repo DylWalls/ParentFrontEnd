@@ -1,0 +1,26 @@
+/*Background Image*/
+body{
+    background-image: url(./RegisterandLogin.jpg);
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center;
+  }
+
+
+.box{
+    top: auto;
+    bottom: auto;
+    left: 8in;
+    position:absolute;
+    z-index: 2;
+    width: auto;
+    font-style: italic;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    background-color: rgba(136, 136, 136, 0.58);
+}
+
+
+*{
+    font-size:xx-large;
+}

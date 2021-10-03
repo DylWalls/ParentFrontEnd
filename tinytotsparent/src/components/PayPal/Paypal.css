@@ -1,0 +1,16 @@
+.app{
+    width: 100vw;
+    height: 100vh;
+    background-image:url("./BackgroundMain.jpg");
+    display: grid;
+    place-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.wrapper{
+    background-color: lightgray;
+    padding: 100px;
+    border-radius: 10px;
+}
