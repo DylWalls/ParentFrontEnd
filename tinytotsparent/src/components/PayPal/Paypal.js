@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
 import ReactDOM from "react-dom"
+
+import '../PayPal/Paypal.css'
 
 const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
 
@@ -24,6 +27,9 @@ const PayPal = (user)=> {
   }
   return (
     <div className="app">
+      <div>
+        <Link to='/home'><h1>Home page</h1></Link>
+      </div>
       <div className="wrapper">
         <h1>Enter a amount you would like to pay!</h1>
           <h1>For Weekly enter:162.50</h1>

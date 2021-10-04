@@ -1,0 +1,12 @@
+.activity{
+    top: 2in;
+    bottom:auto;
+    left: 5in;
+    position:absolute;
+    z-index: 2;
+    width: auto;
+    font-style: italic;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    background-color: rgba(136, 136, 136, 0.58);
+}

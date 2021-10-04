@@ -6,8 +6,8 @@ body{
     background-position:center;
   }
 
-  .box{
-    top: auto;
+  .logger{
+    top: 2in;
     bottom: auto;
     left: 8in;
     position:absolute;
@@ -16,7 +16,7 @@ body{
     font-style: italic;
     color: rgb(0, 0, 0);
     text-align: center;
-    background-color: rgba(136, 136, 136, 0.58);
+    background-color: rgba(136, 136, 136, 0.75);
 }
 
 

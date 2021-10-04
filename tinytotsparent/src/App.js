@@ -14,7 +14,10 @@ import axios from 'axios';
 import Home from './components/Home/home';
 import PayPal from './components/PayPal/Paypal';
 import Login from './components/Login/login';
+import Activity from './components/Activity/activities';
+import Teacher from './components/SeeTeacher/seeTeacher';
 import Register from './components/Register/userRegister';
+import Children from './components/Children/children';
 import Contact from './components/Contact/Contact';
 import './App.css';
 
@@ -53,9 +56,6 @@ const App = () => {
      }else{
         return(
         <div>
-              <div className="header">
-                  {/* Welcome {user.firstName}{user.lastName} to TinyTots App! */}
-              </div>
                 {
                     console.log("User Rendering on first page:", user)
                 }
@@ -63,8 +63,11 @@ const App = () => {
                 <BrowserRouter>
                     <Switch>
                         <Route path="/home" render={props => <Home {...props} user={user}/>}/>
+                        <Route path="/addAChild" component={Children}/>
+                        <Route path="/seeteacher" component={Teacher}/>
                         <Route path="/checkout" component={PayPal}/>
                         <Route path="/contact" component={Contact}/>
+                        <Route path="/activity" component={Activity}/>
                         <Route path="/register" component={Register}/>
                         <Route path="/login" component={Login} />
                         <Route path="/register" render={props => {

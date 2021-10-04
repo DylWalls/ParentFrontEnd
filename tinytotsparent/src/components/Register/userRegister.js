@@ -30,12 +30,12 @@ const Register = ({user}) => {
             console.log(res)
             localStorage.setItem("token", res.data)
             setUser(res);
-            window.location = '/home';
+            window.location = '/login';
         })
         .catch(error => console.log(error));
     }
     return(
-        <div className="box">
+        <div className="boxes">
             <div className="*">Register</div>
                 <form onSubmit={submitHandler}>
                     <div>

@@ -1,24 +1,24 @@
-.teachers{
-    top: 0.35in;
+.add{
+    top: 2in;
     bottom:auto;
     left: 6in;
     position:absolute;
     z-index: 2;
-    width: 8in;
+    width: auto;
     font-style: italic;
     color: rgb(0, 0, 0);
     text-align: center;
-    background-color: rgba(136, 136, 136, 0.75);
+    background-color: rgba(136, 136, 136, 0.58);
 }
-.contacts{
-    top: 4in;
+.delete{
+    top: 3.5in;
     bottom:auto;
-    left: 6in;
+    left: 11in;
     position:absolute;
     z-index: 2;
-    width: 8in;
+    width: auto;
     font-style: italic;
     color: rgb(0, 0, 0);
     text-align: center;
-    background-color: rgba(136, 136, 136, 0.75);
+    background-color: rgba(136, 136, 136, 0.58);
 }

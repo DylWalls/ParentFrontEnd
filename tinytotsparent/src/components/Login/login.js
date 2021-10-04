@@ -30,7 +30,8 @@ const Login = ({user}) => {
 
 
     return(
-        <div className= "box">
+        <div className= "logger">
+            <div> <h2>Welcome to TinyTotsApp</h2></div>
         <div>
             <h2>Sign In</h2>
             <form onSubmit={submitHandler}>
