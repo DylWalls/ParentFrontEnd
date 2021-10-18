@@ -1,0 +1,32 @@
+.activity{
+    top: 1.2in;
+    bottom:auto;
+    position:absolute;
+    z-index: 1;
+    width: auto;
+    font-style: italic;
+    color: rgb(0, 0, 0);
+    background-color: rgba(136, 136, 136, 0.58);
+}
+
+.activity2{
+    top: 4in;
+    bottom:auto;
+    position:absolute;
+    z-index: 1;
+    width: auto;
+    font-style: italic;
+    color: rgb(0, 0, 0);
+    background-color: rgba(136, 136, 136, 0.58);
+}
+
+.activity3{
+    top: 7in;
+    bottom:auto;
+    position:absolute;
+    z-index: 1;
+    width: auto;
+    font-style: italic;
+    color: rgb(0, 0, 0);
+    background-color: rgba(136, 136, 136, 0.58);
+}

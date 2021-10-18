@@ -1,25 +1,122 @@
-import {GoogleMap, withScriptjs, withGoogleMap} from "react-google-maps";
-import React from 'react';
+import React, { 
+  useCallback,
+  useRef,
+} from 'react';
 
+import {
+  GoogleMap,
+ } from "@react-google-maps/api";
 
-function Map(){
-  return <GoogleMap defaultZoom={10} 
-  defaultCenter={{lat: 47.50440074413531, lng: -111.30975214224557}}
-  />
+import mapStyles from "./mapStyles"
+import "../Googlemaps/maps.css"
+
+import usePlacesAutoComplete, {
+  getGeocode,
+  getLatLng,
+} from "use-places-autocomplete";
+import {
+  Combobox,
+  ComboboxInput,
+  ComboboxPopover,
+  ComboboxList,
+  ComboboxOption,
+} from "@reach/combobox";
+
+const mapContainerStyle = {
+  width:"65vw",
+  height:"75vh",
+  left: "6.92in",
+  bottom: "1in"
 }
-const WrappedMap = withScriptjs(withGoogleMap(Map))
+const center = {
+  lat: 47.5053,
+  lng: -111.3008,
+}
+const options = {
+  styles: mapStyles,
+  disableDefaultUI: true,
+  zoomControl: true,
+}
 
-const Map = ()=>{
+const Maps = () => {
+  const mapRef = useRef();
+  const onMapLoad = useCallback((map)=> {
+    mapRef.current = map;
+  }, [])
+
+  const panTo = React.useCallback(({ lat, lng }) => {
+    mapRef.current.panTo({ lat, lng });
+    mapRef.current.setZoom(18);
+  }, []);
+
   return (
-    <div style={{width: '50vw', height: '50vh'}}>
-      <WrappedMap 
-      googleMapUrl={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places=${process.env.REACT_APP_GOOGLE_KEY}`}
-      loadingElement={<div style={{height: '100%vh'}}/>}
-      containerElement={<div style={{height: '100%vh'}}/>}
-      mapElement={<div style={{height: '100%vh'}}/>}
-      />
-    </div>
-  );
+  <div>
+   <Search panTo={panTo} />
+
+     <GoogleMap 
+        id="map"
+        mapContainerStyle={mapContainerStyle} 
+        zoom={12} 
+        center={center}
+        options={options}
+        onLoad={onMapLoad}
+     >
+     </GoogleMap>
+   </div>
+  )
 }
 
-export default Map
+
+function Search({panTo}) {
+  const {ready, value, suggestions: {status, data}, setValue, clearSuggestions} = usePlacesAutoComplete({
+    requestOptions: {
+      location: {
+        lat: () => 47.5053,
+        lng: () => -111.3008 },
+        radius: 200 * 1000,
+    }
+  })
+
+  const handleInput = (e) => {
+    setValue(e.target.value);
+  };
+
+  const handleSelect = async (address) => {
+    setValue(address, false);
+    clearSuggestions();
+
+    try {
+      const results = await getGeocode({ address });
+      const { lat, lng } = await getLatLng(results[0]);
+      panTo({ lat, lng });
+    } catch (error) {
+      console.log("😱 Error: ", error);
+    }
+  };
+
+  return (
+     <div className="search">
+     
+     <Combobox onSelect={handleSelect}>
+     <ComboboxInput 
+        value={value} 
+        onChange={handleInput}
+        disabled={!ready}
+        placeholder= "Enter the Activity Name"
+     />
+     <ComboboxPopover>
+       <ComboboxList>
+       {status === "OK" &&
+              data.map(({ id, description }) => (
+                <ComboboxOption key={id} value={description} />
+              ))}
+       </ComboboxList>
+     </ComboboxPopover>
+    </Combobox>
+  </div>
+  )
+
+
+}
+
+export default Maps
